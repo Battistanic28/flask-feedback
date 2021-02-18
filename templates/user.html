@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Welcome {{user.username}}, to the Route of Secrets!</h1> 
+   <p>Name:   {{user.first_name}} {{user.last_name}}</p>
+   <p>Username:     {{user.username}}</p>
+   <p>Email:    {{user.email}}</p>
+<a href="/users/{{user.username}}/feedback/add">Give Feedback</a>
+
+<div>
+    <ul>
+        {% for feedback in user_feedback %}
+        <li>
+            {{feedback.title}} ---
+            {{feedback.content}}
+            <form style="display: inline" action="/feedback/{{feedback.id}}/delete" method="POST">
+                <button>Delete</button>
+            </form>
+            <form style="display: inline" action="/feedback/{{feedback.id}}/update" method="POST">
+            <button>Edit</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
