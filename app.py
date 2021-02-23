@@ -104,7 +104,7 @@ def delete_feedback(id):
     feedback = Feedback.query.get_or_404(id)
     db.session.delete(feedback)
     db.session.commit()
-    return redirect(f"/users/feedback.username")
+    return redirect(f"/users/{feedback.username}")
 
 
 @app.route('/feedback/<int:id>/update', methods=["GET", "POST"])
